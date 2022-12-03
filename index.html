@@ -42,6 +42,7 @@
     });
     Instascan.Camera.getCameras().then(function (cameras) {
       console.log(cameras.length);
+      alert(cameras.length);
       if (cameras.length > 0) {
         scanner.start(cameras[0]);
       } else {
