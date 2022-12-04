@@ -83,7 +83,8 @@
         var cameraId = devices[0].id;
         const html5QrCode = new Html5Qrcode("reader");
         const qrCodeSuccessCallback = (decodedText, decodedResult) => {
-          alert(decodedText);// 這裡已經可以正確彈出掃描結果，但點按無法跳轉
+          // alert(decodedText);// 這裡已經可以正確彈出掃描結果，但點按無法跳轉
+          confirm(window.location = decodedText);
         };
         const config = {
           fps: 25,
