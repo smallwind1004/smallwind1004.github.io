@@ -1,4 +1,4 @@
-<html>
+<!-- <html>
 
 <head>
   <title>Instascan – Demo</title>
@@ -57,6 +57,47 @@
       }
     }).catch(function (e) {
       console.error(e);
+    });
+  </script>
+</body>
+
+</html> -->
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+
+<body>
+  <div id="reader" width="600px"> </div>
+  <script src="https://unpkg.com/html5-qrcode" type="text/javascript"></script>
+  <script type="text/javascript">
+    // This method will trigger user permissions
+    Html5Qrcode.getCameras().then(devices => {
+      if (devices && devices.length) {
+        var cameraId = devices[0].id;
+        const html5QrCode = new Html5Qrcode("reader");
+        const qrCodeSuccessCallback = (decodedText, decodedResult) => {
+          alert(decodedText);// 這裡已經可以正確彈出掃描結果，但點按無法跳轉
+        };
+        const config = {
+          fps: 25,
+          qrbox: {
+            width: 350,
+            height: 350
+          }
+        };
+        html5QrCode.start({
+          facingMode: "environment"
+        }, config, qrCodeSuccessCallback);
+      }
+    }).catch(err => {
+      // handle err
     });
   </script>
 </body>
